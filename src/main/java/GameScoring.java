@@ -6,9 +6,9 @@ public class GameScoring {
 
     private boolean isDeuce = false;
 
-    private boolean advantageA = false;
+    private boolean isAdvantageA = false;
 
-    private boolean advantageB = false;
+    private boolean isAdvantageB = false;
 
     public String play(String sequencePlayer) {
         if (sequencePlayer.isBlank() && sequencePlayer.isEmpty()) {
@@ -40,11 +40,29 @@ public class GameScoring {
 
 
     public String printTheScore() {
-        if (this.scorePlayerOne == 4) {
+        if (this.scorePlayerOne == this.scorePlayerTwo && this.scorePlayerTwo >= 3) {
+            this.isDeuce = true;
+            return "deuce";
+        }
+        
+        if (this.scorePlayerOne - this.scorePlayerTwo == 1 && this.scorePlayerOne >=3){
+            this.isAdvantageA = ! this.isAdvantageA;
+            this.isAdvantageB = false;
+            return "advantage for A";
+        } else if (this.scorePlayerTwo - this.scorePlayerOne == 1 && this.scorePlayerOne >=3){
+            this.isAdvantageA = false;
+            this.isAdvantageB = ! this.isAdvantageB;
+            return "advantage for A";
+        }
+
+        if (this.scorePlayerOne >= 4 && !isDeuce && !isAdvantageB) {
             return "Player A wins the game";
-        } else if  (this.scorePlayerTwo == 4) {
+        } else if  (this.scorePlayerTwo >= 4 && !isDeuce && !isAdvantageA) {
             return "Player B wins the game";
         }
-        return "Player A : "+POINTS[this.scorePlayerOne]+" / Player B : "+POINTS[this.scorePlayerTwo]+"";
+        if (this.scorePlayerOne <=4 && this.scorePlayerTwo <=4){
+            return "Player A : "+POINTS[this.scorePlayerOne]+" / Player B : "+POINTS[this.scorePlayerTwo]+"";
+        }
+        return "";
     }
 }

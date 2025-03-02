@@ -53,4 +53,31 @@ public class GamePlayTest {
         this.game.play("BBBB");
         assertEquals(this.game.printTheScore(), "Player B wins the game");
     }
+
+    @Test
+    public void player_one_two_has_deuce() {
+        this.game.play("BBBAAA");
+        assertEquals(this.game.printTheScore(), "deuce");
+    }
+
+    @Test
+    public void player_one_has_advantage() {
+        this.game.play("BBBAAAA");
+        assertEquals(this.game.printTheScore(), "advantage for A");
+    }
+
+    /*        BBBB 15 30 40
+        AAAA    15 30 40
+*/
+    @Test
+    public void player_one_has_advantage_then_lose_it() {
+        this.game.play("BBBAAAAB");
+        assertEquals(this.game.printTheScore(), "deuce");
+    }
+
+    @Test
+    public void player_one_has_advantage_then_win() {
+        this.game.play("BBBAAAAA");
+        assertEquals(this.game.printTheScore(), "Player A wins the game");
+    }
 }
