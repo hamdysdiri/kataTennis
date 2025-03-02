@@ -3,8 +3,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
-import static org.junit.Assert.assertThrows;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class GamePlayTest {
 
@@ -23,5 +22,11 @@ public class GamePlayTest {
         assertThrows(IllegalArgumentException.class, () -> {
             this.game.play("AABBC");
         });
+    }
+
+    @Test
+    public void player_one_score_a_point() {
+        this.game.play("A");
+        assertEquals(this.game.print(), "15");
     }
 }

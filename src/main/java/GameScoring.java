@@ -1,11 +1,16 @@
 public class GameScoring {
 
     private static final int[] POINTS = {0, 15, 30, 40};
+    private int scorePlayerOne = 0;
+    private int scorePlayerTwo = 0;
+    private boolean isDeuce = false;
 
+    private boolean advantageA = false;
+
+    private boolean advantageB = false;
 
     public String play(String sequencePlayer) {
         if (sequencePlayer.isBlank() && sequencePlayer.isEmpty()) {
-            print("Should have two players");
             throw new IllegalArgumentException("Should have two players");
         }
         if (!sequencePlayer.matches("[AB]*")) {
@@ -14,19 +19,25 @@ public class GameScoring {
 
         for (char player : sequencePlayer.toCharArray()) {
             if (player == 'A') {
-                scorePoint();
+                scorePoint(player);
             }
             if (player == 'B') {
-                
             }
         }
         return sequencePlayer;
     }
 
-    private void scorePoint() {
+    private void scorePoint(char player) {
+        if (player == 'A') {
+            this.scorePlayerOne ++;
+        }
+        if (player == 'B') {
+            this.scorePlayerTwo ++;
+        }
     }
 
-    private void print(String message) {
-        System.out.println(message);
+
+    public String print() {
+        return String.valueOf(POINTS[this.scorePlayerOne]);
     }
 }
