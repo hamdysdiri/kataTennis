@@ -3,6 +3,7 @@ public class GameScoring {
     private static final int[] POINTS = {0, 15, 30, 40};
     private int scorePlayerOne = 0;
     private int scorePlayerTwo = 0;
+
     private boolean isDeuce = false;
 
     private boolean advantageA = false;
@@ -37,7 +38,10 @@ public class GameScoring {
     }
 
 
-    public String print() {
+    public String printTheScore() {
+        if (this.scorePlayerOne == 4) {
+            return "win";
+        }
         return String.valueOf(POINTS[this.scorePlayerOne]);
     }
 }

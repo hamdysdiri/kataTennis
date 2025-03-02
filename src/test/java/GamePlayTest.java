@@ -27,6 +27,24 @@ public class GamePlayTest {
     @Test
     public void player_one_score_a_point() {
         this.game.play("A");
-        assertEquals(this.game.print(), "15");
+        assertEquals(this.game.printTheScore(), "15");
+    }
+
+    @Test
+    public void player_one_score_TWO_point() {
+        this.game.play("AA");
+        assertEquals(this.game.printTheScore(), "30");
+    }
+
+    @Test
+    public void player_one_score_three_point() {
+        this.game.play("AAA");
+        assertEquals(this.game.printTheScore(), "40");
+    }
+
+    @Test
+    public void player_one_score_Fourth_point() {
+        this.game.play("AAAA");
+        assertEquals(this.game.printTheScore(), "win");
     }
 }
