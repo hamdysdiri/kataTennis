@@ -23,6 +23,7 @@ public class GameScoring {
                 scorePoint(player);
             }
             if (player == 'B') {
+                scorePoint(player);
             }
         }
         return sequencePlayer;
@@ -40,8 +41,10 @@ public class GameScoring {
 
     public String printTheScore() {
         if (this.scorePlayerOne == 4) {
-            return "win";
+            return "Player A wins the game";
+        } else if  (this.scorePlayerTwo == 4) {
+            return "Player B wins the game";
         }
-        return String.valueOf(POINTS[this.scorePlayerOne]);
+        return "Player A : "+POINTS[this.scorePlayerOne]+" / Player B : "+POINTS[this.scorePlayerTwo]+"";
     }
 }

@@ -27,24 +27,30 @@ public class GamePlayTest {
     @Test
     public void player_one_score_a_point() {
         this.game.play("A");
-        assertEquals(this.game.printTheScore(), "15");
+        assertEquals(this.game.printTheScore(), "Player A : 15 / Player B : 0");
     }
 
     @Test
     public void player_one_score_TWO_point() {
         this.game.play("AA");
-        assertEquals(this.game.printTheScore(), "30");
+        assertEquals(this.game.printTheScore(), "Player A : 30 / Player B : 0");
     }
 
     @Test
-    public void player_one_score_three_point() {
+    public void player_one_score_three_straight_point() {
         this.game.play("AAA");
-        assertEquals(this.game.printTheScore(), "40");
+        assertEquals(this.game.printTheScore(), "Player A : 40 / Player B : 0");
     }
 
     @Test
-    public void player_one_score_Fourth_point() {
+    public void player_one_score_Fourth_straight_point() {
         this.game.play("AAAA");
-        assertEquals(this.game.printTheScore(), "win");
+        assertEquals(this.game.printTheScore(), "Player A wins the game");
+    }
+
+    @Test
+    public void player_two_score_Fourth_straight_point() {
+        this.game.play("BBBB");
+        assertEquals(this.game.printTheScore(), "Player B wins the game");
     }
 }
