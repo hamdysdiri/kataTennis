@@ -13,7 +13,7 @@ public class GameScoring {
     public void play(String sequencePlayer) {
         validateSequence(sequencePlayer);
 
-        countScoreForBothPlayers(sequencePlayer);
+        countScoreBlindlyForBothPlayers(sequencePlayer);
     }
 
     private void validateSequence(String sequencePlayer) {
@@ -25,7 +25,7 @@ public class GameScoring {
         }
     }
 
-    private void countScoreForBothPlayers(String sequencePlayer) {
+    private void countScoreBlindlyForBothPlayers(String sequencePlayer) {
         for (char player : sequencePlayer.toCharArray()) {
             if (player == 'A') {
                 this.scorePlayerOne ++;

@@ -5,7 +5,7 @@ import org.junit.rules.ExpectedException;
 
 import static org.junit.Assert.*;
 
-public class GamePlayTest {
+public class GameScoringTest {
 
     @Rule
     public ExpectedException thrown = ExpectedException.none();
@@ -77,4 +77,6 @@ public class GamePlayTest {
         this.game.play("BBBAAAAA");
         assertEquals(this.game.printTheScore(), "Player A wins the game");
     }
+
+
 }
