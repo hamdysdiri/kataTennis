@@ -10,31 +10,29 @@ public class GameScoring {
 
     private boolean isAdvantageB = false;
 
-    public String play(String sequencePlayer) {
+    public void play(String sequencePlayer) {
+        validateSequence(sequencePlayer);
+
+        countScoreForBothPlayers(sequencePlayer);
+    }
+
+    private void validateSequence(String sequencePlayer) {
         if (sequencePlayer.isBlank() && sequencePlayer.isEmpty()) {
             throw new IllegalArgumentException("Should have two players");
         }
         if (!sequencePlayer.matches("[AB]*")) {
             throw new IllegalArgumentException("Invalid input: Sequence should only contain 'A' or 'B'");
         }
-
-        for (char player : sequencePlayer.toCharArray()) {
-            if (player == 'A') {
-                scorePoint(player);
-            }
-            if (player == 'B') {
-                scorePoint(player);
-            }
-        }
-        return sequencePlayer;
     }
 
-    private void scorePoint(char player) {
-        if (player == 'A') {
-            this.scorePlayerOne ++;
-        }
-        if (player == 'B') {
-            this.scorePlayerTwo ++;
+    private void countScoreForBothPlayers(String sequencePlayer) {
+        for (char player : sequencePlayer.toCharArray()) {
+            if (player == 'A') {
+                this.scorePlayerOne ++;
+            }
+            if (player == 'B') {
+                this.scorePlayerTwo ++;
+            }
         }
     }
 
@@ -52,7 +50,7 @@ public class GameScoring {
         } else if (this.scorePlayerTwo - this.scorePlayerOne == 1 && this.scorePlayerOne >=3){
             this.isAdvantageA = false;
             this.isAdvantageB = ! this.isAdvantageB;
-            return "advantage for A";
+            return "advantage for B";
         }
 
         if (this.scorePlayerOne >= 4 && !isDeuce && !isAdvantageB) {
@@ -60,9 +58,6 @@ public class GameScoring {
         } else if  (this.scorePlayerTwo >= 4 && !isDeuce && !isAdvantageA) {
             return "Player B wins the game";
         }
-        if (this.scorePlayerOne <=4 && this.scorePlayerTwo <=4){
-            return "Player A : "+POINTS[this.scorePlayerOne]+" / Player B : "+POINTS[this.scorePlayerTwo]+"";
-        }
-        return "";
+        return "Player A : "+POINTS[Math.min(this.scorePlayerOne,3)]+" / Player B : "+POINTS[Math.min(this.scorePlayerTwo,3)]+"";
     }
 }

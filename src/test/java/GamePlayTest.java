@@ -66,9 +66,6 @@ public class GamePlayTest {
         assertEquals(this.game.printTheScore(), "advantage for A");
     }
 
-    /*        BBBB 15 30 40
-        AAAA    15 30 40
-*/
     @Test
     public void player_one_has_advantage_then_lose_it() {
         this.game.play("BBBAAAAB");
