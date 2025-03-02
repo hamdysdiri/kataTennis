@@ -27,12 +27,23 @@ public class GameScoringSecondSolution {
     private void countScoreForBothPlayers(String sequencePlayer) {
         for (char player : sequencePlayer.toCharArray()) {
             updateScore(player == 'A');
+           /* System.out.println(printTheScoreSecondImplementation());
+            if (hasWinner()) {
+                System.out.println(getWinner());
+                break;
+            }*/
         }
+
     }
 
-    /**
-     * Another implementation
-     */
+    private boolean hasWinner() {
+        return (scorePlayerOne >= 4 && scorePlayerOne - scorePlayerTwo >= 2) ||
+                (scorePlayerTwo >= 4 && scorePlayerTwo - scorePlayerOne >= 2);
+    }
+
+    private String getWinner() {
+        return scorePlayerOne > scorePlayerTwo ? "Player A wins the game" : "Player B wins the game";
+    }
     private void updateScore(boolean isPlayerA) {
         if (this.isDeuce) {
             if (isPlayerA) {

@@ -11,9 +11,7 @@ public class GameScoringSecondSolutionTest {
         game = new GameScoringSecondSolution();
 
     }
-    /**
-     * second method
-     */
+
     @Test
     public void player_one_player_two_deuce() {
         this.game.play("BBBAAA");

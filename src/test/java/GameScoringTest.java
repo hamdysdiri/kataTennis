@@ -77,6 +77,4 @@ public class GameScoringTest {
         this.game.play("BBBAAAAA");
         assertEquals(this.game.printTheScore(), "Player A wins the game");
     }
-
-
 }

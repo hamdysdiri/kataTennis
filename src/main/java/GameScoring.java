@@ -37,12 +37,12 @@ public class GameScoring {
     }
 
 
+
     public String printTheScore() {
         if (this.scorePlayerOne == this.scorePlayerTwo && this.scorePlayerTwo >= 3) {
             this.isDeuce = true;
             return "deuce";
         }
-        
         if (this.scorePlayerOne - this.scorePlayerTwo == 1 && this.scorePlayerOne >=3){
             this.isAdvantageA = ! this.isAdvantageA;
             this.isAdvantageB = false;
@@ -52,7 +52,6 @@ public class GameScoring {
             this.isAdvantageB = ! this.isAdvantageB;
             return "advantage for B";
         }
-
         if (this.scorePlayerOne >= 4 && !isDeuce && !isAdvantageB) {
             return "Player A wins the game";
         } else if  (this.scorePlayerTwo >= 4 && !isDeuce && !isAdvantageA) {
